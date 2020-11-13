@@ -1,38 +1,215 @@
-.App {
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.champs-grid-container {
+  padding: 4rem;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+}
+
+.champs-grid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  text-align: center;
+  /* animation: 3s;
+    animation-name: slidein; */
+}
+
+.champs-grid.animate {
+  transform: translateX(200%);
+  animation: image-animation 2s ease-out forwards;
+}
+
+@keyframes image-animation {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* @keyframes slidein {
+    from {
+        margin-left:100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+} */
+
+.champ-img {
+  border-radius: 50%;
+}
+
+.champ-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 8px #888888;
+  padding: 1rem 1rem 0 1rem;
+  margin: 1rem 1rem 1rem 1rem;
+}
+
+.pagination {
+  list-style: none;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pagination li {
+  margin-right: 0.4rem;
+  display: inline-block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page-link {
+  padding: 0.3rem 0.8rem;
+  background-color: white;
+  border: none;
+  color: #5555db;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page-link:hover {
+  padding: 0.3rem 0.8rem;
+  background-color: #5555db;
+  border: none;
+  color: white;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.page-item.current-page-item .page-link {
+  padding: 0.3rem 0.8rem;
+  background-color: #5555db;
+  border: none;
+  color: white;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.searchbox {
+  position: relative;
+}
+
+.searchbox i {
+  position: absolute;
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+.search-champs-input {
+  padding: 0.5rem 1.8rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  width: 40%;
+}
+
+input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.champ-card .champ-name {
+  color: rgb(4, 121, 255);
+  cursor: pointer;
+}
+
+.champ-card .champ-name:hover {
+  text-decoration: underline;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+  bottom: 60px;
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 0.5rem;
+  outline: none;
+  box-shadow: 0px 0px 8px #888888;
+  padding: 20px;
+  width: 60%;
+  margin: auto;
+}
+
+.close-champ-modal::before {
+  content: "x";
+  color: #fff;
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+}
+
+.modal-container {
+  display: flex;
+  padding: 2rem;
+}
+
+.hero {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-right: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.image-wrapper {
+  height: 450px;
+  width: 310px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  max-width: 310px;
+}
+
+.intro {
+  text-align: center;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.feature .heading {
+  font-weight: bold;
+}
+
+.feature .heading::after {
+  content: ":";
+}
+
+.feature {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-modal::before {
+  position: absolute;
+  margin-top: -1.5rem;
+  content: "X";
+  font-size: 1.8rem;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
 }

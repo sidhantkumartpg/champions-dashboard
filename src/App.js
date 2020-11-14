@@ -25,6 +25,7 @@ API Details:
   Login to https://pandascore.co to get your access token for using API.
   Endpoint - https://api.pandascore.co/lol/champions?page[number]=2&page[size]=10&token=<your token> to get the list of champions.
   Endpoint - https://api.pandascore.co/lol/champions?search[name]=<search keyword>&token=<your token> to search for a champion.
+  Endpoint - https://api.pandascore.co/lol/champions/<id>?token=<your token> to get a particular champion's details
 
 __________________________________ App details: ______________________________________________
 

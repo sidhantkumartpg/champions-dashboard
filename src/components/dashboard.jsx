@@ -3,12 +3,14 @@ import axios from "axios";
 import { apiConstants, token } from "../constants/constants";
 import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
+import { objIsEmpty } from "../utils/utilityFunc";
 
 const Dashboard = (props) => {
   const [champs, setChamps] = useState([]);
   const [champsPerPage, setChampsPerPage] = useState(8); // Can be refrained from being a state
   const [currentPage, setCurrentPage] = useState(1);
   const [animate, setAnimate] = useState(false);
+  const [sortOrder, setSortOrder] = useState({});
 
   // Get champs on current page
   const indexOfLastChamp = currentPage * champsPerPage;
@@ -18,6 +20,29 @@ const Dashboard = (props) => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  function changeSortOrder() {
+    if (objIsEmpty(sortOrder)) {
+      setSortOrder({ order: "desc" });
+      const sortedList = []
+        .concat(champs)
+        .sort((a, b) => (a["name"] > b["name"] ? -1 : 1));
+      setChamps(sortedList);
+    } else {
+      let sortedList;
+      if (sortOrder.order === "desc") {
+        sortedList = []
+          .concat(champs)
+          .sort((a, b) => (a["name"] > b["name"] ? 1 : -1));
+      } else {
+        sortedList = []
+          .concat(champs)
+          .sort((a, b) => (a["name"] > b["name"] ? -1 : 1));
+      }
+      setChamps(sortedList);
+      setSortOrder({ order: sortOrder.order === "desc" ? "asc" : "desc" });
+    }
+  }
 
   useEffect(() => {
     const axiosConfig = {
@@ -48,6 +73,12 @@ const Dashboard = (props) => {
             className="search-champs-input"
             placeholder="Search champion by name"
           />
+          <div className="sort-results" onClick={changeSortOrder}>
+            <span className="sort-criteria">Sort by name</span>
+            {!objIsEmpty(sortOrder) && (
+              <i className={`fa fa-sort-alpha-${sortOrder.order}`} />
+            )}
+          </div>
         </div>
         <ChampsGrid champs={currentChamps} animate={animate} />
         <Pagination

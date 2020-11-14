@@ -15,72 +15,98 @@ const ChampDetails = ({ toggleModal, champDetails }) => {
         <div className="feature">
           <span className="heading">Armor</span>
           <span className="value">
-            {champDetails.armor}
-            <span className="per-level">{champDetails.armorPerLevel}</span>
+            {champDetails.armor ? champDetails.armor : "NA"}
+            <span className="per-level">
+              {champDetails.armorperlevel ? champDetails.armorperlevel : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Attack Damage</span>
           <span className="value">
-            {champDetails.attackDamage}
+            {champDetails.attackdamage ? champDetails.attackdamage : "NA"}
             <span className="per-level">
-              {champDetails.attackDamagePerLevel}
+              {champDetails.attackdamageperlevel}
             </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Attack range</span>
           <span className="value">
-            {champDetails.attackRange}
+            {champDetails.attackrange ? champDetails.attackrange : "NA"}
             <span className="per-level">
-              {champDetails.attackRangePerLevel}
+              {champDetails.attackrangeperlevel
+                ? champDetails.attackrangeperlevel
+                : "NA"}
             </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Attack speed offset</span>
           <span className="value">
-            {champDetails.attackSpeed}
-            <span className="per-level">{champDetails.attackSpeed}</span>
+            {champDetails.attackspeedoffset
+              ? champDetails.attackspeedoffset
+              : "NA"}
+            <span className="per-level">
+              {champDetails.attackspeedperlevel
+                ? champDetails.attackspeedperlevel
+                : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Crit</span>
           <span className="value">
-            {champDetails.crit}
-            <span className="per-level">{champDetails.critPerLevel}</span>
+            {champDetails.crit ? champDetails.crit : "NA"}
+            <span className="per-level">
+              {champDetails.critperlevel ? champDetails.critperlevel : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">HP regen</span>
           <span className="value">
-            {champDetails.hp}
-            <span className="per-level">{champDetails.hpPerLevel}</span>
+            {champDetails.hp ? champDetails.hp : "NA"}
+            <span className="per-level">
+              {champDetails.hpperlevel ? champDetails.hpperlevel : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Movespeed</span>
-          <span className="value">{champDetails.moveSpeed}</span>
+          <span className="value">
+            {champDetails.movespeed ? champDetails.movespeed : "NA"}
+          </span>
         </div>
         <div className="feature">
           <span className="heading">MP</span>
           <span className="value">
-            {champDetails.mp}
-            <span className="per-level">{champDetails.mpPerLevel}</span>
+            {champDetails.mp ? champDetails.mp : "NA"}
+            <span className="per-level">
+              {champDetails.mpperlevel ? champDetails.mpperlevel : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">MP regen</span>
           <span className="value">
-            {champDetails.mpRegen}
-            <span className="per-level">{champDetails.mpRegenPerLevel}</span>
+            {champDetails.mpregen ? champDetails.mpregen : "NA"}
+            <span className="per-level">
+              {champDetails.mpregenperlevel
+                ? champDetails.mpregenperlevel
+                : "NA"}
+            </span>
           </span>
         </div>
         <div className="feature">
           <span className="heading">Spellback</span>
           <span className="value">
-            {champDetails.spellBack}
-            <span className="per-level">{champDetails.spellBackPerLevel}</span>
+            {champDetails.spellback ? champDetails.spellback : "NA"}
+            <span className="per-level">
+              {champDetails.spellbackperlevel
+                ? champDetails.spellbackperlevel
+                : "NA"}
+            </span>
           </span>
         </div>
       </div>

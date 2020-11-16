@@ -2,7 +2,6 @@ import React from "react";
 import ChampCard from "./champCard";
 
 const ChampsGrid = ({ champs, addToWatchList }) => {
-  console.log("Champs grid rendered");
   return (
     <div id={"grid-id"} className={`champs-grid`}>
       {champs.map((champ) => (

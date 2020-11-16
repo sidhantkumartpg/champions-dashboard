@@ -247,7 +247,34 @@ span.per-level {
   position: sticky;
   color: black;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  height: 3rem;
+  align-items: center;
+  padding: 0 0.7rem 0 0.7rem;
+}
+
+#header a {
+  text-decoration: none;
+  color: rgb(4, 121, 255);
+}
+
+#header #logo {
+  font-weight: 600;
+}
+
+#header a:hover {
+  color: rgb(5, 103, 215);
+}
+
+#header .champ-icon {
+  margin-left: 0.5rem;
+  color: rgb(4, 121, 255);
+  font-size: 1.5rem;
+  vertical-align: middle;
 }
 
 /* Add to watch styling */
@@ -283,6 +310,14 @@ span.per-level {
   color: #ffdf00;
 }
 
-.watchlist-count::before {
-  content: " ";
+#watchlist-count {
+  margin-left: 0.4rem;
+}
+
+.watchlist-icon {
+  color: #ff0000;
+}
+
+.no-champs-found {
+  margin-left: 1rem;
 }

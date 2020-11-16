@@ -1,9 +1,11 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Redirect, Route } from "react-router-dom";
 import { apiConstants, token } from "../constants/constants";
 import { objIsEmpty } from "../utils/utilityFunc";
 import Dashboard from "./dashboard";
 import Header from "./header";
+import WatchList from "./watchList";
 
 const HomePage = () => {
   const [champs, setChamps] = useState([]);
@@ -95,12 +97,36 @@ const HomePage = () => {
 
   return (
     <>
-      <Header watchCount={watchCount} />
-      <Dashboard
-        champs={champs}
-        changeSortOrder={changeSortOrder}
-        sortOrder={sortOrder}
-        handleWatchList={handleWatchList}
+      <Route path="/">
+        <Redirect to="/dashboard" />
+      </Route>
+      <Route
+        path="/dashboard"
+        render={(props) => (
+          <>
+            <Header watchCount={watchCount} />
+            <Dashboard
+              champs={champs}
+              changeSortOrder={changeSortOrder}
+              sortOrder={sortOrder}
+              handleWatchList={handleWatchList}
+            />
+          </>
+        )}
+      />
+      <Route
+        path="/watchlist"
+        render={(props) => (
+          <>
+            <Header watchCount={watchCount} />
+            <WatchList
+              champs={champs}
+              changeSortOrder={changeSortOrder}
+              sortOrder={sortOrder}
+              handleWatchList={handleWatchList}
+            />
+          </>
+        )}
       />
     </>
   );

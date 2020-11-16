@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./components/dashboard";
+import HomePage from "./components/homePage";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Dashboard}></Route>
+        <Route path="/" component={HomePage} />
       </Switch>
     </BrowserRouter>
   );
@@ -29,7 +29,7 @@ API Details:
 
 __________________________________ App details: ______________________________________________
 
-  1. A home page where user can view default list of champions in grid with pagination 
+  1. A home page where user can view default list of champions in grid with pagination
 
   2. Home page should also provide an autocomplete search box to find a matching list of champions.
 

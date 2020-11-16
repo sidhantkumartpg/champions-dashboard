@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import ChampDetails from "./champDetails";
 
-const ChampCard = ({ champ }) => {
+const ChampCard = ({ champ, addToWatchList, inWatchList }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function toggleModal() {
@@ -15,6 +15,15 @@ const ChampCard = ({ champ }) => {
       <p className="champ-name" onClick={toggleModal}>
         {champ["name"]}
       </p>
+      <input
+        type="checkbox"
+        name={champ["name"]}
+        className="add-to-watch"
+        value={champ["id"]}
+        onChange={addToWatchList}
+        checked={inWatchList}
+        id={champ["id"]}
+      />
 
       <Modal
         isOpen={modalIsOpen}

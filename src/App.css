@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 
 .container {
   max-width: 1200px;
@@ -240,4 +240,49 @@ span.per-level {
   cursor: pointer;
   font-weight: 500;
   color: cornflowerblue;
+}
+
+#header {
+  background-color: #fff;
+  position: sticky;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Add to watch styling */
+.add-to-watch {
+  visibility: hidden;
+}
+
+.add-to-watch::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  display: inline-block;
+  padding-right: 3px;
+  margin-left: -8px;
+  margin-top: -20px;
+  vertical-align: middle;
+  font-weight: 900;
+  visibility: visible;
+  font-size: 1.5rem;
+  color: #e0e0da;
+}
+
+.add-to-watch:checked::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  display: inline-block;
+  padding-right: 3px;
+  margin-left: -8px;
+  margin-top: -20px;
+  vertical-align: middle;
+  font-weight: 900;
+  visibility: visible;
+  font-size: 1.5rem;
+  color: #ffdf00;
+}
+
+.watchlist-count::before {
+  content: " ";
 }

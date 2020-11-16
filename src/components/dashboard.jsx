@@ -1,69 +1,57 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { apiConstants, token } from "../constants/constants";
 import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
 import { objIsEmpty } from "../utils/utilityFunc";
 
-const Dashboard = (props) => {
-  const [champs, setChamps] = useState([]);
-  const [champsPerPage, setChampsPerPage] = useState(8); // Can be refrained from being a state
+const Dashboard = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
+  const champsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
-  const [animate, setAnimate] = useState(false);
-  const [sortOrder, setSortOrder] = useState({});
+  const [searchText, setSearchText] = useState("");
+  // const [watchList, setWatchList] = useState([]);
 
-  // Get champs on current page
-  const indexOfLastChamp = currentPage * champsPerPage;
-  const indexOfFirstChamp = indexOfLastChamp - champsPerPage;
-  const currentChamps = champs.slice(indexOfFirstChamp, indexOfLastChamp);
+  // if (!champs) {
+  //   return (
+  //     <div className="champs-grid-container container">
+  //       <h3>Loading...</h3>
+  //     </div>
+  //   );
+  // }
+
+  let indexOfFirstChamp;
+  let indexOfLastChamp;
+  let currentChamps;
+  let champsCount;
+
+  if (searchText.trim()) {
+    currentChamps = champs.filter((champ) =>
+      champ["name"].toLowerCase().includes(searchText.toLowerCase())
+    );
+    champsCount = currentChamps.length;
+    indexOfLastChamp = currentPage * champsPerPage;
+    indexOfFirstChamp = indexOfLastChamp - champsPerPage;
+    currentChamps = currentChamps.slice(indexOfFirstChamp, indexOfLastChamp);
+    // currentChamps = currentChamps.slice(currentChamps.length, )
+  } else {
+    champsCount = champs.length;
+    // Get champs on current page
+    indexOfLastChamp = currentPage * champsPerPage;
+    indexOfFirstChamp = indexOfLastChamp - champsPerPage;
+    currentChamps = champs.slice(indexOfFirstChamp, indexOfLastChamp);
+  }
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  function changeSortOrder() {
-    if (objIsEmpty(sortOrder)) {
-      setSortOrder({ order: "desc" });
-      const sortedList = []
-        .concat(champs)
-        .sort((a, b) => (a["name"] > b["name"] ? -1 : 1));
-      setChamps(sortedList);
-    } else {
-      let sortedList;
-      if (sortOrder.order === "desc") {
-        sortedList = []
-          .concat(champs)
-          .sort((a, b) => (a["name"] > b["name"] ? 1 : -1));
-      } else {
-        sortedList = []
-          .concat(champs)
-          .sort((a, b) => (a["name"] > b["name"] ? -1 : 1));
-      }
-      setChamps(sortedList);
-      setSortOrder({ order: sortOrder.order === "desc" ? "asc" : "desc" });
-    }
+  function handleSearchChange(e) {
+    e.preventDefault();
+    setSearchText(e.target.value);
+    setCurrentPage(1);
   }
-
-  useEffect(() => {
-    const axiosConfig = {
-      method: "get",
-      url: `${apiConstants.BASE_URL}${apiConstants.GET_ALL_CHAMPS}`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    axios(axiosConfig)
-      .then((champList) => {
-        console.log(champList.data);
-        setChamps(champList.data);
-      })
-      .catch(console.log("something went wrong"));
-  }, []);
 
   return (
     <>
-      {/* <Header/> */}
       <div className="champs-grid-container container">
         <h1>League of legends champions</h1>
         <div className="searchbox">
@@ -72,18 +60,24 @@ const Dashboard = (props) => {
             type="text"
             className="search-champs-input"
             placeholder="Search champion by name"
+            onChange={handleSearchChange}
+            value={searchText}
           />
           <div className="sort-results" onClick={changeSortOrder}>
             <span className="sort-criteria">Sort by name</span>
             {!objIsEmpty(sortOrder) && (
-              <i className={`fa fa-sort-alpha-${sortOrder.order}`} />
+              <i
+                className={`fas fa-sort-alpha-${
+                  sortOrder.order === "asc" ? "up" : "down-alt"
+                }`}
+              />
             )}
           </div>
         </div>
-        <ChampsGrid champs={currentChamps} animate={animate} />
+        <ChampsGrid champs={currentChamps} addToWatchList={handleWatchList} />
         <Pagination
           champsPerPage={champsPerPage}
-          totalChamps={champs.length}
+          totalChamps={champsCount}
           paginate={paginate}
           currentPage={currentPage}
         />

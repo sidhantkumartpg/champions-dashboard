@@ -11,6 +11,7 @@ const HomePage = () => {
   const [champs, setChamps] = useState([]);
   const [sortOrder, setSortOrder] = useState({});
   const [watchCount, setWatchCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleWatchList(e) {
     const checked = e.target.checked;
@@ -86,13 +87,14 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    fetchAllChamps().then((champList) =>
+    fetchAllChamps().then((champList) => {
       setChamps(
         champList.data.map((champ) => {
           return { ...champ, inWatchList: false };
         })
-      )
-    );
+      );
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -110,6 +112,7 @@ const HomePage = () => {
               changeSortOrder={changeSortOrder}
               sortOrder={sortOrder}
               handleWatchList={handleWatchList}
+              isLoading={isLoading}
             />
           </>
         )}

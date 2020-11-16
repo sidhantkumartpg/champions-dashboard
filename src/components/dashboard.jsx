@@ -4,7 +4,13 @@ import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
 import { objIsEmpty } from "../utils/utilityFunc";
 
-const Dashboard = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
+const Dashboard = ({
+  champs,
+  handleWatchList,
+  changeSortOrder,
+  sortOrder,
+  isLoading,
+}) => {
   const champsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState("");
@@ -74,7 +80,11 @@ const Dashboard = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
             )}
           </div>
         </div>
-        <ChampsGrid champs={currentChamps} addToWatchList={handleWatchList} />
+        <ChampsGrid
+          champs={currentChamps}
+          addToWatchList={handleWatchList}
+          isLoading={isLoading}
+        />
         <Pagination
           champsPerPage={champsPerPage}
           totalChamps={champsCount}

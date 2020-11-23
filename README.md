@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Assignment 2: Champions dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description:
 
-## Available Scripts
+Create an application where users can view/search list of champions on home page and provide actions on displayed result to add/remove
+champions into user’s watch list. A watch list page should display selected champions with full details.
+Application should interact with an API in order to provide list and search champions.
 
-In the project directory, you can run:
+### API Details:
 
-### `npm start`
+Login to https://pandascore.co to get your access token for using API.
+Endpoint - https://api.pandascore.co/lol/champions?page[number]=2&page[size]=10&token=<your token> to get the list of champions.
+Endpoint - https://api.pandascore.co/lol/champions?search[name]=<search keyword>&token=<your token> to search for a champion.
+Endpoint - https://api.pandascore.co/lol/champions/<id>?token=<your token> to get a particular champion's details
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+******\*\*\*\*******\_\_******\*\*\*\******* App details: **********\*\***********\_\_**********\*\***********
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. A home page where user can view default list of champions in grid with pagination
 
-### `npm test`
+2. Home page should also provide an autocomplete search box to find a matching list of champions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. The results grid column should be sortable asc/desc (without API call).
 
-### `npm run build`
+4. Provide action buttons in each row of the grid to add/remove champions to user’s watch list.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Display summary/count of added champions into watch list icon on the home page. (Can be on page left or top panel).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. On click of the champion name, users can view the details of a champion `(modal/popup screen).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. Users can navigate to the watch list page on the click of the home page’s watch list icon, where he/she can view all
+   selected champions with details one by one with image (may use card).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+8. Users should also be able to remove champions from the watch list page.

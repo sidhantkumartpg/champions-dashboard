@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
+import PropTypes from "prop-types";
 
-const WatchList = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
+const WatchList = ({ champs, handleWatchList }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const champsPerPage = 8;
 
@@ -31,7 +31,7 @@ const WatchList = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
       </h1>
       {champs.length === 0 ? (
         <h3 className="no-champs-found">
-          Seriously you don't like any champion ?
+          {`Seriously you don't like any champion ?`}
         </h3>
       ) : (
         <>
@@ -46,6 +46,11 @@ const WatchList = ({ champs, handleWatchList, changeSortOrder, sortOrder }) => {
       )}
     </div>
   );
+};
+
+WatchList.propTypes = {
+  champs: PropTypes.array.isRequired,
+  handleWatchList: PropTypes.func.isRequired,
 };
 
 export default WatchList;

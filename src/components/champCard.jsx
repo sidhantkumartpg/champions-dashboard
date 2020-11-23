@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import ChampDetails from "./champDetails";
+import PropTypes from "prop-types";
 
 const ChampCard = ({ champ, addToWatchList, inWatchList }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -34,6 +35,16 @@ const ChampCard = ({ champ, addToWatchList, inWatchList }) => {
       </Modal>
     </div>
   );
+};
+
+ChampCard.propTypes = {
+  champ: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+    id: PropTypes.isRequired,
+  }).isRequired,
+  addToWatchList: PropTypes.func.isRequired,
+  inWatchList: PropTypes.bool.isRequired,
 };
 
 export default ChampCard;

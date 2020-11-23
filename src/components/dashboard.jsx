@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { apiConstants, token } from "../constants/constants";
+import React, { useState } from "react";
 import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
 import { objIsEmpty } from "../utils/utilityFunc";
+import PropTypes from "prop-types";
 
 const Dashboard = ({
   champs,
@@ -14,15 +14,6 @@ const Dashboard = ({
   const champsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState("");
-  // const [watchList, setWatchList] = useState([]);
-
-  // if (!champs) {
-  //   return (
-  //     <div className="champs-grid-container container">
-  //       <h3>Loading...</h3>
-  //     </div>
-  //   );
-  // }
 
   let indexOfFirstChamp;
   let indexOfLastChamp;
@@ -37,7 +28,6 @@ const Dashboard = ({
     indexOfLastChamp = currentPage * champsPerPage;
     indexOfFirstChamp = indexOfLastChamp - champsPerPage;
     currentChamps = currentChamps.slice(indexOfFirstChamp, indexOfLastChamp);
-    // currentChamps = currentChamps.slice(currentChamps.length, )
   } else {
     champsCount = champs.length;
     // Get champs on current page
@@ -94,6 +84,16 @@ const Dashboard = ({
       </div>
     </>
   );
+};
+
+Dashboard.propTypes = {
+  champs: PropTypes.array.isRequired,
+  sortOrder: PropTypes.shape({
+    order: PropTypes.any.isRequired,
+  }),
+  handleWatchList: PropTypes.func.isRequired,
+  changeSortOrder: PropTypes.func.isRequired,
+  isLoading: PropTypes.any.isRequired,
 };
 
 export default Dashboard;

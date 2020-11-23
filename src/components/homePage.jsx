@@ -104,7 +104,7 @@ const HomePage = () => {
       </Route>
       <Route
         path="/dashboard"
-        render={(props) => (
+        render={() => (
           <>
             <Header watchCount={watchCount} />
             <Dashboard
@@ -119,7 +119,7 @@ const HomePage = () => {
       />
       <Route
         path="/watchlist"
-        render={(props) => (
+        render={() => (
           <>
             <Header watchCount={watchCount} />
             <WatchList

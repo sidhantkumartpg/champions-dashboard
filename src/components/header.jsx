@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Header = ({ watchCount }) => {
   return (
@@ -14,6 +15,10 @@ const Header = ({ watchCount }) => {
       </Link>
     </div>
   );
+};
+
+Header.propTypes = {
+  watchCount: PropTypes.number.isRequired,
 };
 
 export default Header;

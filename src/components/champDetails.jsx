@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ChampDetails = ({ toggleModal, champDetails }) => {
   return (
@@ -113,6 +114,33 @@ const ChampDetails = ({ toggleModal, champDetails }) => {
       <div className="close-modal" onClick={toggleModal}></div>
     </div>
   );
+};
+
+ChampDetails.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+  champDetails: PropTypes.shape({
+    big_image_url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    armor: PropTypes.isRequired,
+    armorperlevel: PropTypes.isRequired,
+    attackdamage: PropTypes.isRequired,
+    attackdamageperlevel: PropTypes.isRequired,
+    attackrange: PropTypes.isRequired,
+    attackrangeperlevel: PropTypes.isRequired,
+    attackspeedoffset: PropTypes.isRequired,
+    attackspeedperlevel: PropTypes.isRequired,
+    crit: PropTypes.isRequired,
+    critperlevel: PropTypes.isRequired,
+    hp: PropTypes.isRequired,
+    hpperlevel: PropTypes.isRequired,
+    movespeed: PropTypes.isRequired,
+    mp: PropTypes.isRequired,
+    mpperlevel: PropTypes.isRequired,
+    mpregen: PropTypes.isRequired,
+    mpregenperlevel: PropTypes.isRequired,
+    spellback: PropTypes.isRequired,
+    spellbackperlevel: PropTypes.isRequired,
+  }),
 };
 
 export default ChampDetails;

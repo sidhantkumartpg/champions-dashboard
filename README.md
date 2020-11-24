@@ -13,7 +13,7 @@ Endpoint - https://api.pandascore.co/lol/champions?page[number]=2&page[size]=10&
 Endpoint - https://api.pandascore.co/lol/champions?search[name]=<search keyword>&token=<your token> to search for a champion.
 Endpoint - https://api.pandascore.co/lol/champions/<id>?token=<your token> to get a particular champion's details
 
-******\*\*\*\*******\_\_******\*\*\*\******* App details: **********\*\***********\_\_**********\*\***********
+### App details: 
 
 1. A home page where user can view default list of champions in grid with pagination
 

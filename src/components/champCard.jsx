@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import ChampDetails from "./champDetails";
 import PropTypes from "prop-types";
+Modal.setAppElement("#root");
 
 const ChampCard = ({ champ, addToWatchList, inWatchList }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

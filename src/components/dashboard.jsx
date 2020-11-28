@@ -3,6 +3,9 @@ import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
 import { objIsEmpty } from "../utils/utilityFunc";
 import PropTypes from "prop-types";
+import WithLoader from "./withLoader";
+
+const ChampsGridWithLoading = WithLoader(ChampsGrid);
 
 const Dashboard = ({
   champs,
@@ -70,11 +73,15 @@ const Dashboard = ({
             )}
           </div>
         </div>
-        <ChampsGrid
+        <ChampsGridWithLoading
+          isLoading={isLoading}
           champs={currentChamps}
           addToWatchList={handleWatchList}
-          isLoading={isLoading}
         />
+        {/* <ChampsGrid
+          champs={currentChamps}
+          addToWatchList={handleWatchList}
+        /> */}
         <Pagination
           champsPerPage={champsPerPage}
           totalChamps={champsCount}
@@ -89,7 +96,7 @@ const Dashboard = ({
 Dashboard.propTypes = {
   champs: PropTypes.array.isRequired,
   sortOrder: PropTypes.shape({
-    order: PropTypes.any.isRequired,
+    order: PropTypes.any,
   }),
   handleWatchList: PropTypes.func.isRequired,
   changeSortOrder: PropTypes.func.isRequired,

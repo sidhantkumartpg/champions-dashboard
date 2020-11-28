@@ -29,10 +29,10 @@ const Pagination = ({ champsPerPage, totalChamps, paginate, currentPage }) => {
 };
 
 Pagination.propTypes = {
-  champsPerPage: PropTypes.isRequired,
-  totalChamps: PropTypes.isRequired,
-  paginate: PropTypes.isRequired,
-  currentPage: PropTypes.isRequired,
+  champsPerPage: PropTypes.number,
+  totalChamps: PropTypes.number,
+  paginate: PropTypes.func,
+  currentPage: PropTypes.number,
 };
 
 export default Pagination;

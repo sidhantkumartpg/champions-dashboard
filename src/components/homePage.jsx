@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 import { apiConstants, token } from "../constants/constants";
 import { objIsEmpty } from "../utils/utilityFunc";
 import Dashboard from "./dashboard";
-import Header from "./header";
+import MemoizedHeader from "./header";
 import WatchList from "./watchList";
 
 const HomePage = () => {
@@ -25,9 +25,6 @@ const HomePage = () => {
     if (indexOfChamp === -1) return;
 
     if (checked) {
-      // ...champs.slice(0, indexOfChamp),
-      // { ...champs[indexOfChamp], inWatchList: true },
-      // ...champs.slice(indexOfChamp + 1),
       champsConst[indexOfChamp] = {
         ...champs[indexOfChamp],
         inWatchList: true,
@@ -106,7 +103,7 @@ const HomePage = () => {
         path="/dashboard"
         render={() => (
           <>
-            <Header watchCount={watchCount} />
+            <MemoizedHeader watchCount={watchCount} />
             <Dashboard
               champs={champs}
               changeSortOrder={changeSortOrder}
@@ -121,7 +118,7 @@ const HomePage = () => {
         path="/watchlist"
         render={() => (
           <>
-            <Header watchCount={watchCount} />
+            <MemoizedHeader watchCount={watchCount} />
             <WatchList
               champs={champs}
               changeSortOrder={changeSortOrder}

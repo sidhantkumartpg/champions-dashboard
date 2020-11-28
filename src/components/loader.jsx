@@ -1,6 +1,9 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
+/**
+ * The loader component to render loading svg when their is some network call
+ */
 const Loader = () => {
   return (
     <ContentLoader

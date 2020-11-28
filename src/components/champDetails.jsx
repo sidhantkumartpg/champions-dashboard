@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ *
+ * A modal component that will show all the details of a particular champ
+ *
+ * @param {Function} toggleModal - Handler to close modal
+ * @param {Object} champDetails - Contains all details (properties) of a particular champ
+ */
+
 const ChampDetails = ({ toggleModal, champDetails }) => {
   return (
     <div className="modal-container">

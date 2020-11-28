@@ -3,6 +3,12 @@ import ChampsGrid from "./champsGrid";
 import Pagination from "./pagination";
 import PropTypes from "prop-types";
 
+/**
+ * Component for viewing champions added to watchlist
+ * @param {Array} champs - List of champs
+ * @param {Function} handleWatchList - Handler to add or remove champs from watchlist
+ */
+
 const WatchList = ({ champs, handleWatchList }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const champsPerPage = 8;

@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * Component for showing page numbers and navigation links
+ * @param {Number} champsPerPage - Number of champs to be shown per page
+ * @param {Number} totalChamps - Total number of champs fetched from API
+ * @param {Function} paginate - Sets current page number and champs to show at this page
+ * @param {Number} currentPage - Indicates current page number
+ */
+
 const Pagination = ({ champsPerPage, totalChamps, paginate, currentPage }) => {
   const pageNumbers = [];
 
